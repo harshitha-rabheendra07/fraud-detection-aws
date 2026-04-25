@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fraud-detection-prod
+  namespace: production
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: fraud-detection-prod
+  template:
+    metadata:
+      labels:
+        app: fraud-detection-prod
+    spec:
+      containers:
+      - name: fraud-app
+        image: 968603941077.dkr.ecr.ap-south-1.amazonaws.com/fraud-detection:latest
+        ports:
+        - containerPort: 8501
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: fraud-detection-prod-service
+  namespace: production
+spec:
+  selector:
+    app: fraud-detection-prod
+  ports:
+  - port: 8501
+    targetPort: 8501
+  type: LoadBalancer
