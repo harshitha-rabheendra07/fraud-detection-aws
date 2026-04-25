@@ -1,9 +1,5 @@
 # Fraud Detection — CI/CD Project
 
-**Author: Suresh D R | AI Product Developer & Technology Mentor**
-*MLOps Syllabus — Deploy and Retrain ML Models on AWS*
-
-## Quick Start
 
 ```bash
 python -m venv venv
